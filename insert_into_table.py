@@ -1,9 +1,12 @@
 from azure.cosmosdb.table.tableservice import TableService
 from azure.cosmosdb.table.models import Entity
+import csv
+
 
 account_name = ''
 accoun_key = ''
-table_name = ''
+table_name = 'projectx'
+file_name = 'C:\\Users\\admin\\Downloads\\meta.csv'
 
 def set_table_service():
     return TableService(account_name,accoun_key)
@@ -16,18 +19,12 @@ ts = set_table_service()
 if get_table_service() == False:
     ts.create_table(table_name)
 
-def load_csv(ts):
-    csvFile = open(csvFile, 'r')
-field_names = ('TimeStamp','Metadata')
+
+csvFile = open(file_name, 'r')
+field_names = ('PartitionKey','RowKey','TimeStamp','UpdatedOn','ID','Priority')
 reader = csv.DictReader(csvFile)
 rows = [row for row in reader]
 for row in rows:
     index = rows.index(row)
-    row['PartitionKey'] = '1'
-    row['RowKey'] = '%08d' % index
     ts.insert_or_replace_entity(table_name,row)
 
-task = {'PartitionKey':'somevalkue','RowKey':'002',
-        'description':'this is description text','priority':200}
-
-ts.insert_entity(table_name,task)
