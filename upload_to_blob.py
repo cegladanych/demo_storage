@@ -1,4 +1,5 @@
 from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+from azure.core.exceptions import ResourceNotFoundError
 import os
 
 connect_str = 'BlobEndpoint=https://devopscegladanychsa.blob.core.windows.net/?sv=2019-10-10&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-07-10T13:47:24Z&st=2020-07-08T05:47:24Z&spr=https&sig=oYflf4cQqqJrwQaDOPGt7ZcePFaSWNa1hxLM6CJKDvY%3D'
@@ -11,7 +12,10 @@ blob_service_client = BlobServiceClient.from_connection_string(connect_str)
 
 
 # Create the container
-container_client = blob_service_client.create_container(container_name)
+try:
+    container_client = blob_service_client.create_container(container_name)
+except Exception:
+    pass
 
 directory = os.fsencode(local_path)
 
