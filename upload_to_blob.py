@@ -2,7 +2,7 @@ from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
 from azure.core.exceptions import ResourceNotFoundError
 import os
 
-connect_str = 'BlobEndpoint=https://devopscegladanychsa.blob.core.windows.net/?sv=2019-10-10&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-07-10T13:47:24Z&st=2020-07-08T05:47:24Z&spr=https&sig=oYflf4cQqqJrwQaDOPGt7ZcePFaSWNa1hxLM6CJKDvY%3D'
+connect_str = ''
 container_name = 'projectx'
 # local_file_name = '00d8ee562ff3436aa5ce0c5c41f4826d.json'
 local_path = 'C:\\Users\\admin\\Downloads\\json'
