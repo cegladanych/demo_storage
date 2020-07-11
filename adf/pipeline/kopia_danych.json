@@ -65,12 +65,7 @@
 									"type": "JsonSource",
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
-										"recursive": false,
-										"wildcardFileName": {
-											"value": "@concat(split(item().name,'.')[0],'.json')",
-											"type": "Expression"
-										},
-										"enablePartitionDiscovery": false
+										"recursive": true
 									},
 									"formatSettings": {
 										"type": "JsonReadSettings"
