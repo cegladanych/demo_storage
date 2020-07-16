@@ -19,6 +19,6 @@ with open(csv_file_name,'r') as csvFile:
         json_data['Priority'] = row['Priority']
 
         #json_data = row
-        with open('C:\\Users\\admin\\Downloads\\' + FileName +'.json','w') as jsonFile:
+        with open('C:\\Users\\admin\\Downloads\\json\\' + FileName +'.json','w') as jsonFile:
             jsonFile.write(json.dumps(json_data,indent=4))
 
